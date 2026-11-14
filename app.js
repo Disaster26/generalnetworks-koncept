@@ -13,18 +13,8 @@
   nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',zamknij);});
   d.addEventListener('keydown',function(e){if(e.key==='Escape')zamknij();});
 
-  // aktywna pozycja menu
-  var linki=[].slice.call(nav.querySelectorAll('a'));
-  var sekcje=linki.map(function(a){return d.querySelector(a.getAttribute('href'));});
-  function akt(){
-    var y=window.scrollY+window.innerHeight*0.35, idx=-1;
-    sekcje.forEach(function(s,i){if(s&&s.offsetTop<=y)idx=i;});
-    linki.forEach(function(a,i){a.classList.toggle('akt',i===idx);});
-  }
-  window.addEventListener('scroll',akt,{passive:true}); akt();
-
   // dolny pasek po przewinięciu za przycisk w hero
-  var mob=d.getElementById('mob'), cta=d.getElementById('cta-hero');
+  var mob=d.getElementById('mob'), cta=d.getElementById('cta-hero')||d.querySelector('.ph');
   if('IntersectionObserver' in window && mob && cta){
     new IntersectionObserver(function(en){
       var poza=!en[0].isIntersecting && en[0].boundingClientRect.top<0;
@@ -70,7 +60,7 @@
   }
 
   // formularz pokazowy
-  var f=d.getElementById('form'), info=d.getElementById('form-info');
+  var f=d.getElementById('zapytanie'), info=d.getElementById('form-info');
   if(f) f.addEventListener('submit',function(e){
     e.preventDefault();
     info.textContent='To formularz pokazowy. W gotowej stronie zapytanie trafi na projekty@generalnetworks.pl.';
