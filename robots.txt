@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 
-Sitemap: https://disaster26.github.io/generalnetworks-koncept/sitemap.xml
+Sitemap: https://wylinka-podglad.pl/generalnetworks-koncept/sitemap.xml
